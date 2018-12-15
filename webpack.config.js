@@ -24,7 +24,27 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: 'css-loader'
+        oneOf: [
+          {
+            resourceQuery: /module/,
+            use: [
+              'vue-style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true,
+                  localIdentName: '[local]_[hash:base64:5]'
+                }
+              }
+            ]
+          },
+          {
+            use: [
+              'vue-style-loader',
+              'css-loader'
+            ]
+          }
+        ]
       },
       {
         test: /\.js$/,
@@ -33,6 +53,17 @@ const config = {
           presets: ['@babel/preset-env'],
         }
       },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      }
     ],
   },
   plugins: [
