@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="container">
     <p>Hello bro</p>
   </div>
 </template>
@@ -11,4 +11,8 @@ export default {
 </script>
 
 <style lang="css">
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 </style>
